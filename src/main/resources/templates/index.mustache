@@ -7,6 +7,17 @@
     <div class="row">
         <div class="col-md-6">
             <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
+            <!-- if문 대신 username이 존재(true)한다면 블록내의 코드가 실행됨-->
+            {{#userName}}
+                Logged in as: <span id="user">{{userName}}</span>
+                <!--spring security에서 기본적으로 제공하는 로그아웃 URL-->
+                <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+            {{/userName}}
+            <!-- username이 존재하지 않을 경우 아래 코드 실행-->
+            {{^userName}}
+                <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
+            {{/userName}}
         </div>
     </div>
     <br>
